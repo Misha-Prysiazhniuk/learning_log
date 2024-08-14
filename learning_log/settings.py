@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e_s$-$p+a@silwi##kx#9%a*qn!9b=+u(%$7-3kt=@o)k7s=p@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.environ.get('DEBUG') == 'True':
+    DEBUG = True
+elif os.environ.get('DEBUG') == 'False':
+    DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -136,3 +139,5 @@ LOGIN_URL = 'users:login'
 # Heroku settings
 import django_heroku
 django_heroku.settings(locals())
+
+# heroku URL https://learninglog-m-062318111de2.herokuapp.com/
