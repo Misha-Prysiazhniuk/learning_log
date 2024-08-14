@@ -23,10 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e_s$-$p+a@silwi##kx#9%a*qn!9b=+u(%$7-3kt=@o)k7s=p@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('DEBUG') == 'True':
-    DEBUG = True
-elif os.environ.get('DEBUG') == 'False':
-    DEBUG = False
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -65,7 +62,7 @@ ROOT_URLCONF = 'learning_log.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,3 +138,7 @@ import django_heroku
 django_heroku.settings(locals())
 
 # heroku URL https://learninglog-m-062318111de2.herokuapp.com/
+if os.environ.get('DEBUG') == 'True':
+    DEBUG = True
+elif os.environ.get('DEBUG') == 'False':
+    DEBUG = False
