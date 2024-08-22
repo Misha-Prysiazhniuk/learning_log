@@ -132,13 +132,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # My settings
 LOGIN_URL = 'users:login'
-
-# Heroku settings
-import django_heroku
-django_heroku.settings(locals())
-
-# heroku URL https://learninglog-m-062318111de2.herokuapp.com/
-if os.environ.get('DEBUG') == 'True':
-    DEBUG = True
-elif os.environ.get('DEBUG') == 'False':
-    DEBUG = False
